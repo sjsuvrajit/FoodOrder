@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Foods } from 'src/app/shared/models/food';
+import { Tag } from 'src/app/shared/models/Tag';
 
 @Injectable({
   providedIn: 'root'
@@ -8,10 +9,31 @@ export class FoodService {
 
   constructor() { }
 
+  getFoodbyId(id: number): Foods {
+    return this.getAll().find(food => food.id == id)!;
+  }
+
   getAllFoodByTag(tag: string): Foods[] {
     return tag == "All" ?
     this.getAll() : 
     this.getAll().filter(food => food.tags?.includes(tag))
+  }
+
+  getAllTag(): Tag[]{
+    return [
+      {name: "All", count: 10},
+      {name: "Lunch", count: 5},
+      {name: "Non-veg", count: 7},
+      {name: "Chicken", count: 1},
+      {name: "Mutton", count: 2},
+      {name: "Veg", count: 4},
+      {name: "Fastfood", count: 4},
+      {name: "Egg", count: 1},
+      {name: "Snacks", count: 1},
+      {name: "Fish", count: 1},
+      {name: "Starter", count: 2},
+      {name: "Paneer", count: 1},
+    ]
   }
 
   getAll(): Foods[]{
@@ -58,7 +80,7 @@ export class FoodService {
         favorite: false,
         imageUrl: "/assets/egg roll.jpeg",
         cookTime: "10-15",
-        tags: ["Fast-food", "Non-veg", "Egg"]
+        tags: ["Fastfood", "Non-veg", "Egg"]
       },
       {
         id: 5,
@@ -102,7 +124,7 @@ export class FoodService {
         favorite: false,
         imageUrl: "/assets/chowmin.jpeg",
         cookTime: "15-20",
-        tags: ["Fast-food", "Non-veg", "Veg"]
+        tags: ["Fastfood", "Non-veg", "Veg"]
       },
       {
         id: 9,
@@ -113,7 +135,7 @@ export class FoodService {
         favorite: true,
         imageUrl: "/assets/pani-puri.jpeg",
         cookTime: "3-5",
-        tags: ["Fast-food", "Non-veg"]
+        tags: ["Fastfood", "Non-veg"]
       },
       {
         id: 10,
