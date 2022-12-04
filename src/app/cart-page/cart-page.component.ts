@@ -29,7 +29,7 @@ export class CartPageComponent implements OnInit {
 
   changeQuantity(cartItem: CartItem, quantityInString: string) {
     const quantity = parseInt(quantityInString);
-    this.cartServicce.changeQuantity(cartItem.food.id, quantity);
+    this.cartServicce.changeQuantity(quantity, cartItem.food.id);
     this.setCart();
   }
 
