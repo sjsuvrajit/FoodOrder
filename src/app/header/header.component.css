@@ -28,3 +28,10 @@ nav ul li a {
     padding: 1em;
     display: inline-block;
 }
+
+.quantity {
+    background-color: #e72929;
+    color: white;
+    padding: .3rem;
+    border-radius: 1rem;
+}
